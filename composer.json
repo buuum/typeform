@@ -1,0 +1,29 @@
+{
+  "name": "buuum/typeform",
+  "type": "library",
+  "description": "Simple api for typeform",
+  "homepage": "https://github.com/buuum/typeform",
+  "keywords": [
+    "events",
+    "event"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alfons Martinez",
+      "email": "alfonsmartinezparra@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Buuum\\": "src/typeform"
+    }
+  },
+  "require": {
+    "php": ">=5.5.0",
+    "php-curl-class/php-curl-class": "^7.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  }
+}
