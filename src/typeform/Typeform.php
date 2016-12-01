@@ -179,11 +179,16 @@ class Typeform
 
     /**
      * @return array
+     * @throws \Exception
      */
     public function getPayLoad()
     {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
+
+        if (is_null($data) || !isset($data['form_response'])) {
+            throw new \Exception('Get payload fails.');
+        }
 
         return [
             'hiddens' => isset($data['form_response']['hidden']) ? $data['form_response']['hidden'] : [],

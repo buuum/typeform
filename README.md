@@ -167,8 +167,12 @@ $typeform->setUntil($until);
 webhook.php
 ```php
 
-$typeform = new Typeform($api_key);
-$response = $typeform->getPayLoad();
+try{
+    $typeform = new Typeform($api_key);
+    $response = $typeform->getPayLoad();
+ }catch(Exception $e){
+    echo $e->getMessage();
+}
 
 ```
 
