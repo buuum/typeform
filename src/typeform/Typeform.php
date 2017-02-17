@@ -190,10 +190,13 @@ class Typeform
             throw new \Exception('Get payload fails.');
         }
 
+
         return [
-            'hiddens' => isset($data['form_response']['hidden']) ? $data['form_response']['hidden'] : [],
-            'score'   => isset($data['form_response']['calculated']) ? $data['form_response']['calculated']['score'] : 0,
-            'token'   => $data['form_response']['token']
+            'hiddens'   => isset($data['form_response']['hidden']) ? $data['form_response']['hidden'] : [],
+            'score'     => isset($data['form_response']['calculated']) ? $data['form_response']['calculated']['score'] : 0,
+            'token'     => $data['form_response']['token'],
+            'questions' => isset($data['form_response']['definition']['fields']) ? $data['form_response']['definition']['fields'] : [],
+            'answers'   => isset($data['form_response']['answers']) ? $data['form_response']['answers'] : [],
         ];
     }
 
