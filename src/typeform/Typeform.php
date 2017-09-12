@@ -531,7 +531,7 @@ class Typeform
         foreach ($this->getQuestions() as $id => $question) {
             $headers[$id] = $question;
         }
-        $headers[] = 'score';
+        $headers['score'] = 'score';
 
         return array_map('utf8_decode', $headers);
     }
@@ -544,7 +544,6 @@ class Typeform
         $rows = [];
         foreach ($this->getResponses() as $response) {
 
-            $hash = '';
             $fields = [];
             foreach ($this->getQuestions() as $question_id => $question_name) {
                 $rr = '';
@@ -552,16 +551,12 @@ class Typeform
                     $rr = $response['answers'][$question_id];
                 } elseif (isset($response['hidden'][$question_name])) {
                     $rr = $response['hidden'][$question_name];
-                    if ($question_name == 'hash') {
-                        $hash = $rr;
-                    }
-
                 }
-                $fields[] = $rr;
+
+                $fields[$question_id] = $rr;
             }
 
-            $fields[] = isset($response['answers']['score']) ? $response['answers']['score'] : 0;
-            $fields[] = $hash;
+            $fields['score'] = isset($response['answers']['score']) ? $response['answers']['score'] : 0;
             //$rows[] = array_map('utf8_decode', $fields);
             $rows[] = $fields;
         }
