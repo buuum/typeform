@@ -529,7 +529,7 @@ class Typeform
     {
         $headers = [];
         foreach ($this->getQuestions() as $id => $question) {
-            $headers[] = $question;
+            $headers[$id] = $question;
         }
         $headers[] = 'score';
 
